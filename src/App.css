@@ -657,6 +657,208 @@ a {
 }
 
 /* =========================================
+   HU-03 — SOLUCIONES
+========================================= */
+
+.solutions {
+  padding: 110px 0;
+
+  background: var(--color-surface);
+}
+
+.solution-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 24px;
+}
+
+.solution-card {
+  position: relative;
+
+  min-height: 310px;
+
+  padding: 35px;
+
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+
+  background: var(--color-background);
+
+  box-shadow: var(--shadow-small);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.solution-card:hover {
+  transform: translateY(-7px);
+
+  border-color: rgba(47, 111, 149, 0.3);
+
+  box-shadow: var(--shadow-medium);
+}
+
+.solution-number {
+  display: block;
+
+  margin-bottom: 55px;
+
+  color: var(--color-accent);
+
+  font-size: 13px;
+  font-weight: 800;
+
+  letter-spacing: 2px;
+}
+
+.solution-card h3 {
+  margin: 0 0 14px;
+
+  color: var(--color-primary);
+
+  font-size: 24px;
+}
+
+.solution-card p {
+  margin: 0;
+
+  color: var(--color-text-light);
+
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.solution-card a {
+  display: inline-block;
+
+  margin-top: 25px;
+
+  color: var(--color-secondary);
+
+  font-size: 13px;
+  font-weight: 700;
+
+  text-decoration: none;
+}
+
+.solution-card a:hover {
+  color: var(--color-primary);
+}
+
+/* =========================================
+   HU-04 — NOSOTROS
+========================================= */
+
+.about {
+  padding: 110px 0;
+
+  background: var(--color-background);
+}
+
+.about-content {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  align-items: center;
+
+  gap: 80px;
+}
+
+.about-text {
+  max-width: 650px;
+}
+
+.about-text .eyebrow {
+  color: var(--color-secondary);
+}
+
+.about-text h2 {
+  margin: 0;
+
+  color: var(--color-primary);
+
+  font-size: clamp(34px, 4vw, 52px);
+  line-height: 1.1;
+  letter-spacing: -1.5px;
+}
+
+.about-text p {
+  margin: 22px 0 0;
+
+  color: var(--color-text-light);
+
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.about-text .button {
+  margin-top: 30px;
+}
+
+.about-card {
+  padding: 35px;
+
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+
+  background: var(--color-surface);
+
+  box-shadow: var(--shadow-medium);
+}
+
+.about-item {
+  display: grid;
+
+  grid-template-columns: 45px 1fr;
+
+  gap: 20px;
+
+  padding: 25px 0;
+
+  border-bottom: 1px solid var(--color-border);
+}
+
+.about-item:first-child {
+  padding-top: 0;
+}
+
+.about-item:last-child {
+  padding-bottom: 0;
+
+  border-bottom: 0;
+}
+
+.about-item > span {
+  color: var(--color-accent);
+
+  font-size: 13px;
+  font-weight: 800;
+
+  letter-spacing: 2px;
+}
+
+.about-item h3 {
+  margin: 0 0 8px;
+
+  color: var(--color-primary);
+
+  font-size: 20px;
+}
+
+.about-item p {
+  margin: 0;
+
+  color: var(--color-text-light);
+
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* =========================================
    CONTACTO
 ========================================= */
 
@@ -670,6 +872,7 @@ a {
 
 .contact-content {
   display: grid;
+
   grid-template-columns: 1fr 460px;
 
   align-items: start;
@@ -679,6 +882,7 @@ a {
 
 .contact-text {
   max-width: 680px;
+
   padding-top: 20px;
 }
 
@@ -865,6 +1069,7 @@ a {
 
 .footer-content {
   display: flex;
+
   align-items: center;
   justify-content: space-between;
 
@@ -934,6 +1139,7 @@ a {
 ========================================= */
 
 @media (max-width: 900px) {
+
   .hero-content {
     grid-template-columns: 1fr;
 
@@ -944,7 +1150,8 @@ a {
     margin: 0;
   }
 
-  .service-grid {
+  .service-grid,
+  .solution-grid {
     grid-template-columns: 1fr 1fr;
   }
 
@@ -955,6 +1162,12 @@ a {
   .contact-card {
     max-width: 600px;
   }
+
+  .about-content {
+    grid-template-columns: 1fr;
+
+    gap: 50px;
+  }
 }
 
 /* =========================================
@@ -962,6 +1175,7 @@ a {
 ========================================= */
 
 @media (max-width: 650px) {
+
   .container {
     width: min(100% - 28px, var(--container-width));
   }
@@ -979,6 +1193,9 @@ a {
 
   .menu {
     gap: 20px;
+
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
   .menu a {
@@ -996,6 +1213,7 @@ a {
 
   .hero h1 {
     font-size: 45px;
+
     letter-spacing: -2px;
   }
 
@@ -1016,7 +1234,9 @@ a {
     padding: 40px 28px;
   }
 
-  .services {
+  .services,
+  .solutions,
+  .about {
     padding: 75px 0;
   }
 
@@ -1032,18 +1252,43 @@ a {
     font-size: 15px;
   }
 
-  .service-grid {
+  .service-grid,
+  .solution-grid {
     grid-template-columns: 1fr;
   }
 
-  .service-card {
+  .service-card,
+  .solution-card {
     min-height: auto;
 
     padding: 30px;
   }
 
-  .service-number {
+  .service-number,
+  .solution-number {
     margin-bottom: 35px;
+  }
+
+  .about-content {
+    gap: 35px;
+  }
+
+  .about-text h2 {
+    font-size: 35px;
+  }
+
+  .about-text p {
+    font-size: 15px;
+  }
+
+  .about-card {
+    padding: 25px;
+  }
+
+  .about-item {
+    grid-template-columns: 35px 1fr;
+
+    gap: 14px;
   }
 
   .contact {
@@ -1076,6 +1321,7 @@ a {
 ========================================= */
 
 @media (prefers-reduced-motion: reduce) {
+
   html {
     scroll-behavior: auto;
   }

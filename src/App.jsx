@@ -1,4 +1,5 @@
 import { useState } from 'react'
+
 import './App.css'
 
 function App() {
@@ -52,7 +53,8 @@ function App() {
       'Los datos son válidos. Se abrirá tu aplicación de correo.',
     )
 
-    window.location.href = `mailto:soporte@hostingoccidente.mx?subject=${subject}&body=${body}`
+    window.location.href =
+      `mailto:soporte@hostingoccidente.mx?subject=${subject}&body=${body}`
   }
 
   return (
@@ -61,6 +63,7 @@ function App() {
       {/* =========================
           ENCABEZADO Y NAVEGACIÓN
       ========================== */}
+
       <header className="header">
         <div className="container nav">
 
@@ -72,6 +75,8 @@ function App() {
           <nav className="menu" aria-label="Navegación principal">
             <a href="#inicio">Inicio</a>
             <a href="#servicios">Servicios</a>
+            <a href="#soluciones">Soluciones</a>
+            <a href="#nosotros">Nosotros</a>
             <a href="#contacto">Contacto</a>
           </nav>
 
@@ -81,11 +86,13 @@ function App() {
       {/* =========================
           CONTENIDO PRINCIPAL
       ========================== */}
+
       <main>
 
         {/* =========================
             HU-01 — PÁGINA DE INICIO
         ========================== */}
+
         <section id="inicio" className="hero">
 
           <div className="container hero-content">
@@ -169,6 +176,7 @@ function App() {
         {/* =========================
             HU-02 — SERVICIOS
         ========================== */}
+
         <section id="servicios" className="services">
 
           <div className="container">
@@ -263,8 +271,205 @@ function App() {
         </section>
 
         {/* =========================
+            HU-03 — SOLUCIONES
+        ========================== */}
+
+        <section id="soluciones" className="solutions">
+
+          <div className="container">
+
+            <div className="section-heading">
+
+              <span className="eyebrow">
+                SOLUCIONES DIGITALES
+              </span>
+
+              <h2>
+                Soluciones para hacer crecer tu presencia digital
+              </h2>
+
+              <p>
+                Diseñamos y desarrollamos soluciones web orientadas
+                a las necesidades de cada proyecto, desde sitios
+                informativos hasta herramientas digitales para empresas.
+              </p>
+
+            </div>
+
+            <div className="solution-grid">
+
+              <article className="solution-card">
+
+                <span className="solution-number">
+                  01
+                </span>
+
+                <h3>
+                  Presencia web
+                </h3>
+
+                <p>
+                  Sitios web profesionales para presentar tu empresa,
+                  servicios y proyectos de manera clara y confiable.
+                </p>
+
+                <a href="#contacto">
+                  Solicitar información →
+                </a>
+
+              </article>
+
+              <article className="solution-card">
+
+                <span className="solution-number">
+                  02
+                </span>
+
+                <h3>
+                  Soluciones para empresas
+                </h3>
+
+                <p>
+                  Desarrollo de herramientas digitales que ayudan a
+                  mejorar procesos, comunicación y atención a clientes.
+                </p>
+
+                <a href="#contacto">
+                  Solicitar información →
+                </a>
+
+              </article>
+
+              <article className="solution-card">
+
+                <span className="solution-number">
+                  03
+                </span>
+
+                <h3>
+                  Desarrollo personalizado
+                </h3>
+
+                <p>
+                  Propuestas digitales adaptadas a los objetivos,
+                  características y necesidades particulares de cada
+                  proyecto.
+                </p>
+
+                <a href="#contacto">
+                  Solicitar información →
+                </a>
+
+              </article>
+
+            </div>
+
+          </div>
+
+        </section>
+
+        {/* =========================
+            HU-04 — NOSOTROS
+        ========================== */}
+
+        <section id="nosotros" className="about">
+
+          <div className="container about-content">
+
+            <div className="about-text">
+
+              <span className="eyebrow">
+                NOSOTROS
+              </span>
+
+              <h2>
+                Tecnología y soluciones digitales para tu empresa
+              </h2>
+
+              <p>
+                Hosting de Occidente es una propuesta enfocada en
+                ofrecer servicios y soluciones digitales para empresas
+                y proyectos que buscan fortalecer su presencia en Internet.
+              </p>
+
+              <p>
+                Nuestro enfoque combina diseño, desarrollo web y
+                herramientas digitales para crear experiencias claras,
+                funcionales y orientadas a las necesidades de cada cliente.
+              </p>
+
+              <a
+                href="#contacto"
+                className="button button-primary"
+              >
+                Conocer más
+              </a>
+
+            </div>
+
+            <div className="about-card">
+
+              <div className="about-item">
+
+                <span>01</span>
+
+                <div>
+                  <h3>
+                    Enfoque profesional
+                  </h3>
+
+                  <p>
+                    Soluciones digitales diseñadas con una visión clara,
+                    funcional y profesional.
+                  </p>
+                </div>
+
+              </div>
+
+              <div className="about-item">
+
+                <span>02</span>
+
+                <div>
+                  <h3>
+                    Atención personalizada
+                  </h3>
+
+                  <p>
+                    Cada proyecto parte de sus propias necesidades
+                    y objetivos.
+                  </p>
+                </div>
+
+              </div>
+
+              <div className="about-item">
+
+                <span>03</span>
+
+                <div>
+                  <h3>
+                    Desarrollo web
+                  </h3>
+
+                  <p>
+                    Implementación de tecnologías web para crear
+                    experiencias digitales modernas.
+                  </p>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </section>
+
+        {/* =========================
             HU-05 — CONTACTO
         ========================== */}
+
         <section id="contacto" className="contact">
 
           <div className="container contact-content">
@@ -391,6 +596,7 @@ function App() {
       {/* =========================
           PIE DE PÁGINA
       ========================== */}
+
       <footer className="footer">
 
         <div className="container footer-content">
