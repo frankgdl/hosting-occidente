@@ -10,6 +10,39 @@ function App() {
   })
 
   const [formStatus, setFormStatus] = useState('')
+  const [domainInput, setDomainInput] = useState('')
+  const [domainResults, setDomainResults] = useState([])
+  const [domainStatus, setDomainStatus] = useState('')
+
+  const handleDomainSubmit = (event) => {
+    event.preventDefault()
+
+    const normalizedDomain = domainInput
+      .trim()
+      .toLowerCase()
+      .replace(/^https?:\/\//, '')
+      .replace(/^www\./, '')
+      .split('/')[0]
+      .replace(/\s+/g, '')
+
+    const name = normalizedDomain.includes('.')
+      ? normalizedDomain.slice(0, normalizedDomain.lastIndexOf('.'))
+      : normalizedDomain
+
+    if (!/^[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?$/.test(name)) {
+      setDomainResults([])
+      setDomainStatus('Escribe un nombre válido, por ejemplo: miempresa.')
+      return
+    }
+
+    const extensions = ['.com', '.mx', '.com.mx', '.net', '.org']
+    setDomainResults(extensions.map((extension, index) => ({
+      domain: `${name}${extension}`,
+      // Estados de demostración, no representan disponibilidad real.
+      status: index % 3 === 1 ? 'registrado-demo' : 'disponible-demo',
+    })))
+    setDomainStatus('Resultados de demostración: no se consultó Akky ni otro proveedor.')
+  }
 
   const handleChange = (event) => {
     const { name, value } = event.target
@@ -75,6 +108,7 @@ function App() {
           <nav className="menu" aria-label="Navegación principal">
             <a href="#inicio">Inicio</a>
             <a href="#servicios">Servicios</a>
+            <a href="#dominios">Dominios</a>
             <a href="#soluciones">Soluciones</a>
             <a href="#nosotros">Nosotros</a>
             <a href="#contacto">Contacto</a>
@@ -171,6 +205,51 @@ function App() {
 
           </div>
 
+        </section>
+
+        {/* =========================
+            COMPROBADOR DE DOMINIOS — DEMOSTRACIÓN
+        ========================== */}
+
+        <section id="dominios" className="domain-checker">
+          <div className="container domain-checker-content">
+            <div className="domain-checker-heading">
+              <span className="eyebrow">ENCUENTRA TU DOMINIO</span>
+              <h2>Tu idea merece un buen nombre</h2>
+              <p>Escribe el nombre de tu negocio y explora diferentes extensiones para tu presencia en Internet.</p>
+            </div>
+
+            <form className="domain-search-form" onSubmit={handleDomainSubmit}>
+              <label htmlFor="domain-search">Nombre de dominio</label>
+              <div className="domain-search-controls">
+                <input
+                  id="domain-search"
+                  type="text"
+                  value={domainInput}
+                  onChange={(event) => { setDomainInput(event.target.value); setDomainStatus(''); setDomainResults([]) }}
+                  placeholder="Ej. miempresa"
+                  autoComplete="off"
+                  aria-describedby="domain-demo-note"
+                />
+                <button className="button button-primary" type="submit">Consultar dominio</button>
+              </div>
+              <p id="domain-demo-note" className="domain-demo-note">Modo demostración: los resultados son ejemplos y no indican disponibilidad real.</p>
+            </form>
+
+            {domainStatus && (
+              <div className="domain-results" role="status" aria-live="polite">
+                <p className="domain-results-notice">{domainStatus}</p>
+                {domainResults.map((result) => (
+                  <div className="domain-result-row" key={result.domain}>
+                    <span className="domain-result-name">{result.domain}</span>
+                    <span className={`domain-result-status ${result.status}`}>
+                      {result.status === 'disponible-demo' ? 'Disponible (ejemplo)' : 'Registrado (ejemplo)'}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
         </section>
 
         {/* =========================
