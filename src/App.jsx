@@ -625,9 +625,6 @@ function App() {
                   />
                   {formErrors.nombre && <span className="field-error" id="nombre-error">{formErrors.nombre}</span>}
 
-                  {/*
-                  />
-
                 </div>
 
                 <div className="form-group">
@@ -650,9 +647,6 @@ function App() {
                   />
                   {formErrors.correo && <span className="field-error" id="correo-error">{formErrors.correo}</span>}
 
-                  {/*
-                  />
-
                 </div>
 
                 <div className="form-group">
@@ -673,9 +667,6 @@ function App() {
                     aria-describedby={formErrors.mensaje ? 'mensaje-error' : undefined}
                   ></textarea>
                   {formErrors.mensaje && <span className="field-error" id="mensaje-error">{formErrors.mensaje}</span>}
-
-                  {/*
-                  ></textarea>
 
                 </div>
 
