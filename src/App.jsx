@@ -10,6 +10,7 @@ function App() {
   })
 
   const [formStatus, setFormStatus] = useState('')
+  const [formErrors, setFormErrors] = useState({})
   const [domainInput, setDomainInput] = useState('')
   const [domainResults, setDomainResults] = useState([])
   const [domainStatus, setDomainStatus] = useState('')
@@ -53,6 +54,7 @@ function App() {
     })
 
     setFormStatus('')
+    setFormErrors((currentErrors) => ({ ...currentErrors, [name]: '' }))
   }
 
   const handleSubmit = (event) => {
@@ -62,15 +64,19 @@ function App() {
     const correo = formData.correo.trim()
     const mensaje = formData.mensaje.trim()
 
-    if (!nombre || !correo || !mensaje) {
-      setFormStatus('Por favor, completa todos los campos.')
-      return
+    const emailPattern = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/
+    const nextErrors = {
+      nombre: nombre ? '' : 'Escribe tu nombre.',
+      correo: !correo
+        ? 'Escribe tu correo electrónico.'
+        : (!emailPattern.test(correo) ? 'Introduce un correo electrónico válido.' : ''),
+      mensaje: mensaje ? '' : 'Escribe un mensaje.',
     }
 
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    setFormErrors(nextErrors)
 
-    if (!emailPattern.test(correo)) {
-      setFormStatus('Por favor, introduce un correo electrónico válido.')
+    if (Object.values(nextErrors).some(Boolean)) {
+      setFormStatus('Revisa los campos señalados antes de continuar.')
       return
     }
 
@@ -79,7 +85,7 @@ function App() {
     )
 
     const body = encodeURIComponent(
-      `Nombre: ${nombre}\nCorreo: ${correo}\n\nMensaje:\n${mensaje}`,
+      `Nombre: ${nombre}\\nCorreo: ${correo}\\n\\nMensaje:\\n${mensaje}`,
     )
 
     setFormStatus(
@@ -92,6 +98,10 @@ function App() {
 
   return (
     <div className="app">
+
+      <a className="skip-link" href="#contenido-principal">
+        Saltar al contenido principal
+      </a>
 
       {/* =========================
           ENCABEZADO Y NAVEGACIÓN
@@ -606,8 +616,16 @@ function App() {
                     name="nombre"
                     type="text"
                     placeholder="Tu nombre"
+                    autoComplete="name"
+                    required
                     value={formData.nombre}
                     onChange={handleChange}
+                    aria-invalid={Boolean(formErrors.nombre)}
+                    aria-describedby={formErrors.nombre ? 'nombre-error' : undefined}
+                  />
+                  {formErrors.nombre && <span className="field-error" id="nombre-error">{formErrors.nombre}</span>}
+
+                  {/*
                   />
 
                 </div>
@@ -623,8 +641,16 @@ function App() {
                     name="correo"
                     type="email"
                     placeholder="tu@correo.com"
+                    autoComplete="email"
+                    required
                     value={formData.correo}
                     onChange={handleChange}
+                    aria-invalid={Boolean(formErrors.correo)}
+                    aria-describedby={formErrors.correo ? 'correo-error' : undefined}
+                  />
+                  {formErrors.correo && <span className="field-error" id="correo-error">{formErrors.correo}</span>}
+
+                  {/*
                   />
 
                 </div>
@@ -640,8 +666,15 @@ function App() {
                     name="mensaje"
                     rows="5"
                     placeholder="¿En qué podemos ayudarte?"
+                    required
                     value={formData.mensaje}
                     onChange={handleChange}
+                    aria-invalid={Boolean(formErrors.mensaje)}
+                    aria-describedby={formErrors.mensaje ? 'mensaje-error' : undefined}
+                  ></textarea>
+                  {formErrors.mensaje && <span className="field-error" id="mensaje-error">{formErrors.mensaje}</span>}
+
+                  {/*
                   ></textarea>
 
                 </div>
@@ -649,17 +682,22 @@ function App() {
                 {formStatus && (
                   <p
                     className="form-status"
-                    role="alert"
+                    role={Object.values(formErrors).some(Boolean) ? 'alert' : 'status'}
+                    aria-live="polite"
                   >
                     {formStatus}
                   </p>
                 )}
 
+                <p className="form-disclaimer">
+                  Al continuar, se abrirá la aplicación de correo configurada en tu dispositivo con el mensaje preparado. El sitio no envía información a un servidor.
+                </p>
+
                 <button
                   type="submit"
                   className="button button-primary"
                 >
-                  Enviar solicitud
+                  Preparar correo
                 </button>
 
               </form>
