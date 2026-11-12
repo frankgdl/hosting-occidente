@@ -2,92 +2,116 @@
 
 ## Proyecto II — Universidad de Guadalajara
 
-Sitio web corporativo desarrollado para **Hosting de Occidente**, como parte de la asignatura **Proyecto II** de la Licenciatura en Desarrollo de Sistemas Web de la Universidad de Guadalajara.
+Sitio web corporativo desarrollado para la asignatura Proyecto II de la Licenciatura en Desarrollo de Sistemas Web de la Universidad de Guadalajara.
 
-El proyecto tiene como finalidad presentar de manera clara y profesional los servicios de la empresa y facilitar el contacto con clientes potenciales.
+## Objetivo
 
----
+Presentar los servicios de Hosting de Occidente mediante una navegación clara, diseño adaptable y medios de contacto para clientes potenciales.
 
-## Tecnologías utilizadas
+## Tecnologías
 
-- React
+- React 19
 - JavaScript
 - Vite
-- HTML5
-- CSS3
-- Git
-- GitHub
+- HTML5 y CSS3
+- Git y GitHub
 
----
+## Funcionalidades documentadas
 
-## Objetivo del proyecto
+- Página de inicio y presentación de servicios.
+- Secciones de soluciones y nosotros.
+- Navegación entre secciones.
+- Formulario de contacto que prepara un mensaje mediante `mailto:`.
+- Buscador de dominios en modo demostración.
 
-Diseñar y desarrollar un sitio web corporativo que permita a los visitantes conocer los servicios de Hosting de Occidente, navegar de forma sencilla por la información y establecer contacto con la empresa.
+> El formulario no transmite datos a un servidor. Depende de que el visitante tenga configurada una aplicación de correo. El buscador de dominios no consulta un registrador ni confirma disponibilidad real.
 
----
+## Historias de usuario y backlog
 
-## Sprint 1
+| ID | Historia / funcionalidad | Iteración documentada |
+|---|---|---|
+| HU-01 | Página de inicio | Sprint 1 |
+| HU-02 | Consulta de servicios | Sprint 1 |
+| HU-03 | Sección de soluciones | Sprint 2 |
+| HU-04 | Sección nosotros | Sprint 2 |
+| HU-05 | Contacto | Sprint 1; mejora U4 |
+| HU-06 | Diseño responsive | Sprint 2 |
+| HU-07 | Acceso rápido al contacto | Sprint 2 |
+| HU-08 | Navegación | Sprint 1; mejora U4 |
+| HU-09 | Identidad corporativa | Sprint 2 |
+| HU-10 | Experiencia de usuario e interfaz | Sprint 2; mejora U4 |
 
-La primera iteración del desarrollo se basa en las historias de usuario definidas en el Product Backlog de la Actividad 2.
+## Unidad 4 — Iteración de mejoras
 
-### HU-01 — Página de inicio
+A partir de las propuestas de mejora registradas en la actividad anterior y de la retroalimentación general de la asesora (incorporar evidencia de pantallas, conclusiones y fuentes), se trabajó una iteración enfocada en accesibilidad y claridad del contacto.
 
-Como visitante, quiero visualizar una página de inicio clara y profesional para conocer rápidamente a Hosting de Occidente y sus principales servicios.
+### Cambios realizados en esta rama
 
-**Implementación:**
-- Encabezado corporativo.
-- Presentación principal.
-- Descripción de la empresa.
-- Botones de navegación.
-- Identificación del dominio.
+1. Se agregó un enlace para saltar al contenido principal.
+2. Se incorporaron estilos de foco visibles para enlaces, botones, campos y el contenido principal.
+3. Se ajustó el desplazamiento de las secciones para considerar el encabezado fijo.
+4. Se reforzó la validación del formulario: nombre, correo y mensaje obligatorios; formato de correo; mensajes específicos por campo.
+5. Se añadieron atributos `aria-invalid`, `aria-describedby` y regiones de estado para comunicar errores y resultados.
+6. Se aclaró que el formulario abre el cliente de correo mediante `mailto:`; no realiza un envío desde el sitio.
+7. Se conserva el aviso de que el buscador de dominios presenta resultados de demostración.
 
-### HU-02 — Servicios
+### Alcance y limitaciones
 
-Como visitante, quiero consultar los servicios ofrecidos por Hosting de Occidente para identificar cuál puede satisfacer mis necesidades.
+No se integró un proveedor de dominios, una API de disponibilidad ni un backend de contacto. Tampoco se atribuyen reuniones o intervenciones a integrantes de un equipo, ya que el proyecto se desarrolla de manera individual. La actividad se adapta a esa modalidad: la planeación, implementación, revisión y documentación corresponden al estudiante.
 
-**Implementación:**
-- Sección de servicios.
-- Tarjetas informativas.
-- Hosting web.
-- Dominios.
-- Soluciones web.
-- Enlaces para solicitar información.
+## Bitácora técnica de la iteración
 
-### HU-05 — Contacto
+| Actividad | Resultado / evidencia verificable |
+|---|---|
+| Revisión del código base | Se revisaron `src/App.jsx`, `src/App.css`, `src/index.css` y `package.json`. |
+| Accesibilidad de navegación | Enlace de salto, foco visible y márgenes de desplazamiento agregados en esta rama. |
+| Formulario | Validación por campo y explicación de `mailto:` agregadas en `src/App.jsx`. |
+| Estilos | Reglas específicas agregadas al final de `src/App.css`. |
+| Control de versiones | Cambios organizados en la rama `u4-mejoras-accesibilidad-contacto`; `main` se mantiene separada. |
+| Pruebas de compilación | Pendientes de ejecución en un entorno con dependencias instaladas. No se declara compilación exitosa. |
+| Evidencia visual | No se adjuntaron capturas; la revisión visual en navegador queda pendiente. |
 
-Como cliente potencial, quiero solicitar información o una cotización mediante un medio de contacto para iniciar comunicación con la empresa.
+## Reporte de roles — modalidad individual
 
-**Implementación:**
-- Formulario de contacto.
-- Campo de nombre.
-- Campo de correo electrónico.
-- Campo de mensaje.
-- Validación de información.
-- Envío mediante correo electrónico.
-- Correo de contacto: soporte@hostingoccidente.mx
+| Función | Responsable |
+|---|---|
+| Análisis de requerimientos y backlog | Estudiante |
+| Planeación de la iteración | Estudiante |
+| Desarrollo e implementación | Estudiante |
+| Revisión de accesibilidad y validaciones | Estudiante |
+| Control de versiones y documentación | Estudiante |
 
-### HU-08 — Navegación
+La distribución anterior describe funciones asumidas por una sola persona; no representa un equipo ficticio ni reuniones que no se hayan realizado.
 
-Como visitante, quiero navegar de forma sencilla entre las secciones del sitio para encontrar rápidamente la información que necesito.
+## Ejecución local
 
-**Implementación:**
-- Menú principal.
-- Navegación hacia Inicio.
-- Navegación hacia Servicios.
-- Navegación hacia Contacto.
-- Enlaces internos desde los servicios.
-
----
-
-## Diseño responsive
-
-El sitio fue desarrollado considerando diferentes tamaños de pantalla para facilitar su utilización desde dispositivos de escritorio y móviles.
-
----
-
-## Ejecución del proyecto
-
-Para instalar las dependencias:
+Instalar dependencias:
 
 ```bash
 npm install
+```
+
+Iniciar el servidor de desarrollo:
+
+```bash
+npm run dev
+```
+
+Generar compilación:
+
+```bash
+npm run build
+```
+
+Ejecutar revisión estática:
+
+```bash
+npm run lint
+```
+
+## Fuentes de consulta de la actividad
+
+- Miro. (2025). *Sprint planning y review*.
+- Lucid. (2025). *Tipos de reuniones Scrum*.
+
+Las referencias se conservan conforme a los materiales indicados en las instrucciones de la actividad; deben completarse con sus URL o datos bibliográficos exactos si la plataforma los solicita.
